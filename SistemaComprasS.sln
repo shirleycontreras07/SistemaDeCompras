@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaComprasS", "SistemaComprasS\SistemaComprasS.csproj", "{BB8490B1-6061-4F72-B8F0-D2797CEC2421}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB8490B1-6061-4F72-B8F0-D2797CEC2421}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB8490B1-6061-4F72-B8F0-D2797CEC2421}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB8490B1-6061-4F72-B8F0-D2797CEC2421}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB8490B1-6061-4F72-B8F0-D2797CEC2421}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {17AA782E-A576-4EB0-9261-21B1D232A3AB}
+	EndGlobalSection
+EndGlobal
