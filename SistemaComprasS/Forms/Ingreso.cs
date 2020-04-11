@@ -21,10 +21,9 @@ namespace SistemaComprasS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Usuarios usuario = (from u in db.Usuarios
-                                where u.Usuario.Equals(txtUsuario.Text) &&
-                                      u.Clave.Equals(txtClave.Text)
-                                select u).FirstOrDefault();
+            Usuarios usuario = db.Usuarios
+                .Where(x => x.Usuario == txtUsuario.Text && x.Clave == txtClave.Text)
+                .FirstOrDefault();
 
             if (usuario == null)
             {
@@ -44,7 +43,6 @@ namespace SistemaComprasS
                 frm.ShowDialog();
                 this.Close();
             }
-           ;
         }
     }
 }
