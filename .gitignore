@@ -388,3 +388,6 @@ About
 
 # Default ignored files
 .idea
+bin
+obj
+packages
