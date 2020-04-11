@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEdSolicitud));
+            System.ComponentModel.ComponentResourceManager resources =
+                new System.ComponentModel.ComponentResourceManager(typeof(frmEdSolicitud));
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -58,22 +59,23 @@
             this.articuloTableAdapter = new SistemaComprasS.SistemaComprasDataSetTableAdapters.ArticuloTableAdapter();
             this.undMedidaTableAdapter = new SistemaComprasS.SistemaComprasDataSetTableAdapters.UndMedidaTableAdapter();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.articuloBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaComprasDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaComprasDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.empleadoBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.undMedidaBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.solicitudBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.articuloBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.sistemaComprasDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.sistemaComprasDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.empleadoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.undMedidaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.nudCantidad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.solicitudBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnEliminar
             // 
-            this.btnEliminar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEliminar.BackgroundImage")));
+            this.btnEliminar.BackgroundImage =
+                ((System.Drawing.Image) (resources.GetObject("btnEliminar.BackgroundImage")));
             this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnEliminar.Location = new System.Drawing.Point(194, 248);
+            this.btnEliminar.Location = new System.Drawing.Point(226, 286);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(57, 51);
+            this.btnEliminar.Size = new System.Drawing.Size(66, 59);
             this.btnEliminar.TabIndex = 19;
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -81,11 +83,12 @@
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnGuardar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGuardar.BackgroundImage")));
+            this.btnGuardar.BackgroundImage =
+                ((System.Drawing.Image) (resources.GetObject("btnGuardar.BackgroundImage")));
             this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnGuardar.Location = new System.Drawing.Point(91, 248);
+            this.btnGuardar.Location = new System.Drawing.Point(106, 286);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(57, 51);
+            this.btnGuardar.Size = new System.Drawing.Size(66, 59);
             this.btnGuardar.TabIndex = 18;
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -108,20 +111,21 @@
             this.panel1.Controls.Add(this.cbEstado);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(14, 14);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(316, 230);
+            this.panel1.Size = new System.Drawing.Size(368, 265);
             this.panel1.TabIndex = 17;
             // 
             // cbxArticulo
             // 
-            this.cbxArticulo.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.articuloBindingSource, "IdArticulo", true));
+            this.cbxArticulo.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue",
+                this.articuloBindingSource, "IdArticulo", true));
             this.cbxArticulo.DataSource = this.articuloBindingSource;
             this.cbxArticulo.DisplayMember = "Descripcion";
             this.cbxArticulo.FormattingEnabled = true;
-            this.cbxArticulo.Location = new System.Drawing.Point(96, 109);
+            this.cbxArticulo.Location = new System.Drawing.Point(112, 126);
             this.cbxArticulo.Name = "cbxArticulo";
-            this.cbxArticulo.Size = new System.Drawing.Size(121, 21);
+            this.cbxArticulo.Size = new System.Drawing.Size(140, 23);
             this.cbxArticulo.TabIndex = 20;
             this.cbxArticulo.ValueMember = "IdArticulo";
             // 
@@ -138,17 +142,19 @@
             // sistemaComprasDataSet
             // 
             this.sistemaComprasDataSet.DataSetName = "SistemaComprasDataSet";
+            this.sistemaComprasDataSet.Namespace = "http://tempuri.org/SistemaComprasDataSet.xsd";
             this.sistemaComprasDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // cbxEmpleado
             // 
-            this.cbxEmpleado.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.empleadoBindingSource, "IdEmpleado", true));
+            this.cbxEmpleado.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue",
+                this.empleadoBindingSource, "IdEmpleado", true));
             this.cbxEmpleado.DataSource = this.empleadoBindingSource;
             this.cbxEmpleado.DisplayMember = "Nombre";
             this.cbxEmpleado.FormattingEnabled = true;
-            this.cbxEmpleado.Location = new System.Drawing.Point(96, 54);
+            this.cbxEmpleado.Location = new System.Drawing.Point(112, 62);
             this.cbxEmpleado.Name = "cbxEmpleado";
-            this.cbxEmpleado.Size = new System.Drawing.Size(121, 21);
+            this.cbxEmpleado.Size = new System.Drawing.Size(140, 23);
             this.cbxEmpleado.TabIndex = 19;
             this.cbxEmpleado.ValueMember = "IdEmpleado";
             // 
@@ -159,30 +165,31 @@
             // 
             // txtIdSolicitud
             // 
-            this.txtIdSolicitud.Location = new System.Drawing.Point(96, 27);
+            this.txtIdSolicitud.Location = new System.Drawing.Point(112, 31);
             this.txtIdSolicitud.Name = "txtIdSolicitud";
             this.txtIdSolicitud.ReadOnly = true;
-            this.txtIdSolicitud.Size = new System.Drawing.Size(100, 20);
+            this.txtIdSolicitud.Size = new System.Drawing.Size(116, 23);
             this.txtIdSolicitud.TabIndex = 17;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(41, 30);
+            this.label7.Location = new System.Drawing.Point(48, 35);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(18, 13);
+            this.label7.Size = new System.Drawing.Size(18, 15);
             this.label7.TabIndex = 18;
             this.label7.Text = "ID";
             // 
             // cbxMedida
             // 
-            this.cbxMedida.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.undMedidaBindingSource, "IdUndMedida", true));
+            this.cbxMedida.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue",
+                this.undMedidaBindingSource, "IdUndMedida", true));
             this.cbxMedida.DataSource = this.undMedidaBindingSource;
             this.cbxMedida.DisplayMember = "Descripcion";
             this.cbxMedida.FormattingEnabled = true;
-            this.cbxMedida.Location = new System.Drawing.Point(96, 168);
+            this.cbxMedida.Location = new System.Drawing.Point(112, 194);
             this.cbxMedida.Name = "cbxMedida";
-            this.cbxMedida.Size = new System.Drawing.Size(100, 21);
+            this.cbxMedida.Size = new System.Drawing.Size(116, 23);
             this.cbxMedida.TabIndex = 16;
             this.cbxMedida.ValueMember = "IdUndMedida";
             // 
@@ -193,26 +200,26 @@
             // 
             // nudCantidad
             // 
-            this.nudCantidad.Location = new System.Drawing.Point(96, 137);
+            this.nudCantidad.Location = new System.Drawing.Point(112, 158);
             this.nudCantidad.Name = "nudCantidad";
-            this.nudCantidad.Size = new System.Drawing.Size(49, 20);
+            this.nudCantidad.Size = new System.Drawing.Size(57, 23);
             this.nudCantidad.TabIndex = 15;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(36, 171);
+            this.label6.Location = new System.Drawing.Point(42, 197);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 13);
+            this.label6.Size = new System.Drawing.Size(47, 15);
             this.label6.TabIndex = 13;
             this.label6.Text = "Medida";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(36, 139);
+            this.label5.Location = new System.Drawing.Point(42, 160);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 13);
+            this.label5.Size = new System.Drawing.Size(55, 15);
             this.label5.TabIndex = 11;
             this.label5.Text = "Cantidad";
             // 
@@ -220,33 +227,33 @@
             // 
             this.dtpSolicitud.CustomFormat = "yyyy/MM/dd HH:mm:ss ";
             this.dtpSolicitud.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpSolicitud.Location = new System.Drawing.Point(96, 80);
+            this.dtpSolicitud.Location = new System.Drawing.Point(112, 92);
             this.dtpSolicitud.Name = "dtpSolicitud";
-            this.dtpSolicitud.Size = new System.Drawing.Size(200, 20);
+            this.dtpSolicitud.Size = new System.Drawing.Size(233, 23);
             this.dtpSolicitud.TabIndex = 10;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(36, 112);
+            this.label3.Location = new System.Drawing.Point(42, 129);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 13);
+            this.label3.Size = new System.Drawing.Size(49, 15);
             this.label3.TabIndex = 8;
             this.label3.Text = "Articulo";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(41, 87);
+            this.label1.Location = new System.Drawing.Point(48, 100);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 13);
+            this.label1.Size = new System.Drawing.Size(38, 15);
             this.label1.TabIndex = 6;
             this.label1.Text = "Fecha";
             // 
             // cbEstado
             // 
             this.cbEstado.AutoSize = true;
-            this.cbEstado.Location = new System.Drawing.Point(96, 203);
+            this.cbEstado.Location = new System.Drawing.Point(112, 234);
             this.cbEstado.Name = "cbEstado";
             this.cbEstado.Size = new System.Drawing.Size(15, 14);
             this.cbEstado.TabIndex = 5;
@@ -255,18 +262,18 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(38, 203);
+            this.label4.Location = new System.Drawing.Point(44, 234);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 13);
+            this.label4.Size = new System.Drawing.Size(42, 15);
             this.label4.TabIndex = 4;
             this.label4.Text = "Estado";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 57);
+            this.label2.Location = new System.Drawing.Point(28, 66);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 13);
+            this.label2.Size = new System.Drawing.Size(60, 15);
             this.label2.TabIndex = 2;
             this.label2.Text = "Empleado";
             // 
@@ -293,9 +300,9 @@
             // 
             // frmEdSolicitud
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(337, 305);
+            this.ClientSize = new System.Drawing.Size(393, 352);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.panel1);
@@ -304,15 +311,14 @@
             this.Load += new System.EventHandler(this.frmEdSolicitud_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.articuloBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaComprasDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaComprasDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.empleadoBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.undMedidaBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.solicitudBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.articuloBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.sistemaComprasDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.sistemaComprasDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.empleadoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.undMedidaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.nudCantidad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.solicitudBindingSource)).EndInit();
             this.ResumeLayout(false);
-
         }
 
         #endregion
@@ -334,15 +340,15 @@
         private System.Windows.Forms.ComboBox cbxMedida;
         private System.Windows.Forms.ComboBox cbxEmpleado;
         private System.Windows.Forms.BindingSource sistemaComprasDataSetBindingSource;
-        private SistemaComprasDataSet sistemaComprasDataSet;
         private System.Windows.Forms.BindingSource solicitudBindingSource;
-        private SistemaComprasDataSetTableAdapters.SolicitudTableAdapter solicitudTableAdapter;
         private System.Windows.Forms.BindingSource empleadoBindingSource;
-        private SistemaComprasDataSetTableAdapters.EmpleadoTableAdapter empleadoTableAdapter;
         private System.Windows.Forms.ComboBox cbxArticulo;
         private System.Windows.Forms.BindingSource articuloBindingSource;
-        private SistemaComprasDataSetTableAdapters.ArticuloTableAdapter articuloTableAdapter;
         private System.Windows.Forms.BindingSource undMedidaBindingSource;
-        private SistemaComprasDataSetTableAdapters.UndMedidaTableAdapter undMedidaTableAdapter;
+        private SistemaComprasS.SistemaComprasDataSetTableAdapters.UndMedidaTableAdapter undMedidaTableAdapter;
+        private SistemaComprasS.SistemaComprasDataSetTableAdapters.ArticuloTableAdapter articuloTableAdapter;
+        private SistemaComprasS.SistemaComprasDataSetTableAdapters.EmpleadoTableAdapter empleadoTableAdapter;
+        private SistemaComprasS.SistemaComprasDataSetTableAdapters.SolicitudTableAdapter solicitudTableAdapter;
+        private SistemaComprasS.SistemaComprasDataSet sistemaComprasDataSet;
     }
 }

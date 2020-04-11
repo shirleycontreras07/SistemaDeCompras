@@ -40,3 +40,49 @@ C:\Users\Shirley Contreras\Desktop\SistemaComprasS\SistemaComprasS\obj\Debug\Sis
 C:\Users\Shirley Contreras\Desktop\SistemaComprasS\SistemaComprasS\obj\Debug\SistemaComprasS.csproj.CopyComplete
 C:\Users\Shirley Contreras\Desktop\SistemaComprasS\SistemaComprasS\obj\Debug\SistemaComprasS.exe
 C:\Users\Shirley Contreras\Desktop\SistemaComprasS\SistemaComprasS\obj\Debug\SistemaComprasS.pdb
+D:\Programacion\New folder (2)\SistemaComprasS\bin\Debug\SistemaComprasS.exe.config
+D:\Programacion\New folder (2)\SistemaComprasS\bin\Debug\SistemaComprasS.exe
+D:\Programacion\New folder (2)\SistemaComprasS\bin\Debug\SistemaComprasS.pdb
+D:\Programacion\New folder (2)\SistemaComprasS\bin\Debug\EntityFramework.dll
+D:\Programacion\New folder (2)\SistemaComprasS\bin\Debug\EntityFramework.SqlServer.dll
+D:\Programacion\New folder (2)\SistemaComprasS\bin\Debug\EntityFramework.xml
+D:\Programacion\New folder (2)\SistemaComprasS\bin\Debug\EntityFramework.SqlServer.xml
+D:\Programacion\New folder (2)\SistemaComprasS\obj\Debug\SistemaComprasS.csprojAssemblyReference.cache
+D:\Programacion\New folder (2)\SistemaComprasS\obj\Debug\SistemaComprasS.FrmEdArticulo.resources
+D:\Programacion\New folder (2)\SistemaComprasS\obj\Debug\SistemaComprasS.FrmEdDepartamento.resources
+D:\Programacion\New folder (2)\SistemaComprasS\obj\Debug\SistemaComprasS.FrmEdEmpleado.resources
+D:\Programacion\New folder (2)\SistemaComprasS\obj\Debug\SistemaComprasS.FrmEdMarca.resources
+D:\Programacion\New folder (2)\SistemaComprasS\obj\Debug\SistemaComprasS.frmEdMedida.resources
+D:\Programacion\New folder (2)\SistemaComprasS\obj\Debug\SistemaComprasS.FrmEdOrden.resources
+D:\Programacion\New folder (2)\SistemaComprasS\obj\Debug\SistemaComprasS.FrmEdProveedor.resources
+D:\Programacion\New folder (2)\SistemaComprasS\obj\Debug\SistemaComprasS.frmEdSolicitud.resources
+D:\Programacion\New folder (2)\SistemaComprasS\obj\Debug\SistemaComprasS.Ingreso.resources
+D:\Programacion\New folder (2)\SistemaComprasS\obj\Debug\SistemaComprasS.MainView.resources
+D:\Programacion\New folder (2)\SistemaComprasS\obj\Debug\SistemaComprasS.Properties.Resources.resources
+D:\Programacion\New folder (2)\SistemaComprasS\obj\Debug\SistemaComprasS.csproj.GenerateResource.cache
+D:\Programacion\New folder (2)\SistemaComprasS\obj\Debug\SistemaComprasS.csproj.CopyComplete
+D:\Programacion\New folder (2)\SistemaComprasS\obj\Debug\SistemaComprasS.exe
+D:\Programacion\New folder (2)\SistemaComprasS\obj\Debug\SistemaComprasS.pdb
+D:\Programacion\Sistema_Compras\SistemaComprasS\obj\Debug\SistemaComprasS.csprojAssemblyReference.cache
+D:\Programacion\Sistema_Compras\SistemaComprasS\obj\Debug\SistemaComprasS.FrmEdArticulo.resources
+D:\Programacion\Sistema_Compras\SistemaComprasS\obj\Debug\SistemaComprasS.FrmEdDepartamento.resources
+D:\Programacion\Sistema_Compras\SistemaComprasS\obj\Debug\SistemaComprasS.FrmEdEmpleado.resources
+D:\Programacion\Sistema_Compras\SistemaComprasS\obj\Debug\SistemaComprasS.FrmEdMarca.resources
+D:\Programacion\Sistema_Compras\SistemaComprasS\obj\Debug\SistemaComprasS.frmEdMedida.resources
+D:\Programacion\Sistema_Compras\SistemaComprasS\obj\Debug\SistemaComprasS.FrmEdOrden.resources
+D:\Programacion\Sistema_Compras\SistemaComprasS\obj\Debug\SistemaComprasS.FrmEdProveedor.resources
+D:\Programacion\Sistema_Compras\SistemaComprasS\obj\Debug\SistemaComprasS.frmEdSolicitud.resources
+D:\Programacion\Sistema_Compras\SistemaComprasS\obj\Debug\SistemaComprasS.Ingreso.resources
+D:\Programacion\Sistema_Compras\SistemaComprasS\obj\Debug\SistemaComprasS.MainView.resources
+D:\Programacion\Sistema_Compras\SistemaComprasS\obj\Debug\SistemaComprasS.Properties.Resources.resources
+D:\Programacion\Sistema_Compras\SistemaComprasS\obj\Debug\SistemaComprasS.csproj.GenerateResource.cache
+D:\Programacion\Sistema_Compras\SistemaComprasS\obj\Debug\SistemaComprasS.exe
+D:\Programacion\Sistema_Compras\SistemaComprasS\obj\Debug\SistemaComprasS.pdb
+D:\Programacion\Sistema_Compras\SistemaComprasS\bin\Debug\SistemaComprasS.exe.config
+D:\Programacion\Sistema_Compras\SistemaComprasS\bin\Debug\SistemaComprasS.exe
+D:\Programacion\Sistema_Compras\SistemaComprasS\bin\Debug\SistemaComprasS.pdb
+D:\Programacion\Sistema_Compras\SistemaComprasS\bin\Debug\EntityFramework.dll
+D:\Programacion\Sistema_Compras\SistemaComprasS\bin\Debug\EntityFramework.SqlServer.dll
+D:\Programacion\Sistema_Compras\SistemaComprasS\bin\Debug\EntityFramework.xml
+D:\Programacion\Sistema_Compras\SistemaComprasS\bin\Debug\EntityFramework.SqlServer.xml
+D:\Programacion\Sistema_Compras\SistemaComprasS\obj\Debug\SistemaComprasS.csproj.CopyComplete

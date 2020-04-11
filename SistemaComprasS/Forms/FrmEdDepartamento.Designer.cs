@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEdDepartamento));
+            System.ComponentModel.ComponentResourceManager resources =
+                new System.ComponentModel.ComponentResourceManager(typeof(FrmEdDepartamento));
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -43,11 +44,12 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEliminar.BackgroundImage")));
+            this.btnEliminar.BackgroundImage =
+                ((System.Drawing.Image) (resources.GetObject("btnEliminar.BackgroundImage")));
             this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnEliminar.Location = new System.Drawing.Point(134, 154);
+            this.btnEliminar.Location = new System.Drawing.Point(156, 178);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(57, 51);
+            this.btnEliminar.Size = new System.Drawing.Size(66, 59);
             this.btnEliminar.TabIndex = 10;
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -55,11 +57,12 @@
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnGuardar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGuardar.BackgroundImage")));
+            this.btnGuardar.BackgroundImage =
+                ((System.Drawing.Image) (resources.GetObject("btnGuardar.BackgroundImage")));
             this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnGuardar.Location = new System.Drawing.Point(49, 154);
+            this.btnGuardar.Location = new System.Drawing.Point(57, 178);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(57, 51);
+            this.btnGuardar.Size = new System.Drawing.Size(66, 59);
             this.btnGuardar.TabIndex = 9;
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -74,32 +77,32 @@
             this.panel1.Controls.Add(this.txtNombreDepartamento);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(14, 14);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(224, 136);
+            this.panel1.Size = new System.Drawing.Size(261, 157);
             this.panel1.TabIndex = 8;
             // 
             // txtIdDepartamento
             // 
-            this.txtIdDepartamento.Location = new System.Drawing.Point(78, 29);
+            this.txtIdDepartamento.Location = new System.Drawing.Point(91, 33);
             this.txtIdDepartamento.Name = "txtIdDepartamento";
             this.txtIdDepartamento.ReadOnly = true;
-            this.txtIdDepartamento.Size = new System.Drawing.Size(100, 20);
+            this.txtIdDepartamento.Size = new System.Drawing.Size(116, 23);
             this.txtIdDepartamento.TabIndex = 6;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 32);
+            this.label1.Location = new System.Drawing.Point(38, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(18, 13);
+            this.label1.Size = new System.Drawing.Size(18, 15);
             this.label1.TabIndex = 7;
             this.label1.Text = "ID";
             // 
             // cbEstado
             // 
             this.cbEstado.AutoSize = true;
-            this.cbEstado.Location = new System.Drawing.Point(78, 84);
+            this.cbEstado.Location = new System.Drawing.Point(91, 97);
             this.cbEstado.Name = "cbEstado";
             this.cbEstado.Size = new System.Drawing.Size(15, 14);
             this.cbEstado.TabIndex = 5;
@@ -107,34 +110,34 @@
             // 
             // txtNombreDepartamento
             // 
-            this.txtNombreDepartamento.Location = new System.Drawing.Point(78, 55);
+            this.txtNombreDepartamento.Location = new System.Drawing.Point(91, 63);
             this.txtNombreDepartamento.Name = "txtNombreDepartamento";
-            this.txtNombreDepartamento.Size = new System.Drawing.Size(100, 20);
+            this.txtNombreDepartamento.Size = new System.Drawing.Size(116, 23);
             this.txtNombreDepartamento.TabIndex = 2;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(32, 84);
+            this.label4.Location = new System.Drawing.Point(37, 97);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 13);
+            this.label4.Size = new System.Drawing.Size(42, 15);
             this.label4.TabIndex = 4;
             this.label4.Text = "Estado";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 58);
+            this.label2.Location = new System.Drawing.Point(33, 67);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.Size = new System.Drawing.Size(51, 15);
             this.label2.TabIndex = 2;
             this.label2.Text = "Nombre";
             // 
             // FrmEdDepartamento
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(249, 223);
+            this.ClientSize = new System.Drawing.Size(290, 257);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.panel1);
@@ -144,7 +147,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
-
         }
 
         #endregion
