@@ -15,7 +15,7 @@ namespace SistemaComprasS
     
     public partial class frmEdSolicitud : Form
     {
-        public int EstadoValue = 2;
+        public int EstadoValue;
         public SqlConnection con { get; set; }
         public int IdSolicitud { get; set; }
         public int Empleado { get; set; }
@@ -23,7 +23,7 @@ namespace SistemaComprasS
         public int Articulo { get; set; }
         public int Cantidad { get; set; }
         public int Medida { get; set; }
-        public bool Estado { get; set; }
+        public int Estado { get; set; }
         public string Modo { get; set; }
 
         public frmEdSolicitud()
@@ -50,55 +50,90 @@ namespace SistemaComprasS
                 cbxArticulo.SelectedIndex = Articulo;
                 nudCantidad.Value = Cantidad;
                 cbxMedida.SelectedIndex = Medida;
-                cbEstado.Checked = Estado;
 
-                //if (cbEstado.Checked == true)
-                //{
-                //    Estado = true;
-                //    EstadoValue = 1;
-                //}
-                //else
-                //{
-                //    Estado = false;
+                if (cbEstado.Checked)
+                {
 
-                //}
+                    EstadoValue = 1;
+                }else
+                {
+                    EstadoValue = 2;
+                }
+
+                EstadoValue = Estado;
+
+                
 
                 this.Text += " : Editando";
             }
 
         }
 
+        //private void realizarOrden()
+        //{
+        //    string sql = "";
+            
+           
+
+        //    SqlCommand cmd = new SqlCommand(sql, con);
+        //    cmd.ExecuteNonQuery();
+        //}
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             string sql = "";
+            
             if (Modo.Equals("C"))
             {
-
-                
+                if (cbEstado.Checked)
+                { 
+                    EstadoValue = 1;
+                }
+                else
+                {
+                    EstadoValue = 2;
+                }
                 sql = "insert into Solicitud values ('";
                 sql += cbxEmpleado.SelectedValue + "', '" + this.dtpSolicitud.Text + "','";
                 sql += cbxArticulo.SelectedValue + "', '" + Convert.ToInt32(nudCantidad.Value) + "', '" 
-                    + cbxMedida.SelectedValue + "', '" + cbEstado.Checked + "')";
+                    + cbxMedida.SelectedValue + "', '" + EstadoValue + "');";
+                sql += "insert into Orden (Solicitud, Fecha, Estado, Articulo, Cantidad, Medida, Marca, Costo)  ";
+                sql += "SELECT s.IdSolicitud, s.Fecha, CAST(CASE s.Estado WHEN 1 THEN 1 ELSE 0 END AS BIT) as Estado, s.Articulo, s.Cantidad, s.Medida, a.Marca, a.Costo ";
+                sql += "FROM Solicitud s INNER JOIN Articulo a on a.IdArticulo = s.Articulo WHERE s.Estado = 1 and s.IdSolicitud = (select max(d.IdSolicitud) from Solicitud d); ";
 
-                if (cbEstado.Checked)
-                {
 
-                }
+                //if (cbEstado.Checked)
+                //{
+                //    realizarOrden();
+                //}
             }
             else
             {
+                if (cbEstado.Checked)
+                {
+                    EstadoValue = 1;
+                }
+                else
+                {
+                    EstadoValue = 2;
+                }
+
                 sql += "update Solicitud set ";
-
-           
-
 
                 sql += "Empleado = '" + cbxEmpleado.SelectedValue + "',";
                 sql += "Fecha = '" + this.dtpSolicitud.Text + "',";
                 sql += "Articulo = '" + cbxArticulo.SelectedValue + "',";
                 sql += "Cantidad = '" + Convert.ToInt32(nudCantidad.Value) + "',";
                 sql += "Medida = '" + cbxMedida.SelectedValue + "',";
-                sql += "Estado = '" + cbEstado.Checked + "'";
-                sql += " where IdSolicitud = " + txtIdSolicitud.Text;
+                sql += "Estado = '" + EstadoValue + "'";
+                sql += " where IdSolicitud = " + txtIdSolicitud.Text + ";";
+                sql += "insert into Orden (Solicitud, Fecha, Estado, Articulo, Cantidad, Medida, Marca, Costo)  ";
+                sql += "SELECT s.IdSolicitud, s.Fecha, CAST(CASE s.Estado WHEN 1 THEN 1 ELSE 0 END AS BIT) as Estado, s.Articulo, s.Cantidad, s.Medida, a.Marca, a.Costo ";
+                sql += "FROM Solicitud s INNER JOIN Articulo a on a.IdArticulo = s.Articulo WHERE s.Estado = 1 and s.IdSolicitud = (select max(d.IdSolicitud) from Solicitud d); ";
+                //if (cbEstado.Checked)
+                //{
+                //    realizarOrden();
+                //}
 
             }
 

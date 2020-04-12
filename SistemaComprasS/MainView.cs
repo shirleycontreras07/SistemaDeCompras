@@ -385,9 +385,13 @@ namespace SistemaComprasS
                 string ExistenciaS = string.Empty + Existencia;
                 ExistenciaS = row.Cells[4].Value.ToString();
 
+                decimal Costo = frm.Costo;
+                string CostoS = string.Empty + Costo;
+                CostoS = row.Cells[5].Value.ToString();
+
 
                 string estadoS = Convert.ToString(frm.Estado);
-                estadoS = row.Cells[5].Value.ToString();
+                estadoS = row.Cells[6].Value.ToString();
 
                 frm.Modo = "E";
                 frm.con = con;
@@ -817,7 +821,7 @@ namespace SistemaComprasS
                 if (cbxCriterio.Text.Length > 0)
                 {
 
-                    writeFileHeader("ID, Descripcion, Marca, Medida, Existencia, Estado");
+                    writeFileHeader("ID, Descripcion, Marca, Medida, Existencia, Costo, Estado");
 
                     foreach (DataRow row in oTable.Rows)
                     {
