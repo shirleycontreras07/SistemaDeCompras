@@ -8,11 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
+using System.Diagnostics;
 
 namespace SistemaComprasS
 {
     public partial class MainView : Form
     {
+        DataTable dt = new DataTable();
+        DataTable oTable = new DataTable();
         SqlConnection con = null;
         
         string consulta = "";
@@ -28,6 +32,7 @@ namespace SistemaComprasS
             cbxCriterio.ResetText();
             this.consulta = "Marca";
             ejecutarConsulta();
+           
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -37,6 +42,8 @@ namespace SistemaComprasS
 
         private void BtMantEmpleados_Click(object sender, EventArgs e)
         {
+            
+
             txtBuscar.ResetText();
             cbxCriterio.ResetText();
             this.consulta = "Empleado";
@@ -176,6 +183,7 @@ namespace SistemaComprasS
 
         private void BtMantDepartamentos_Click(object sender, EventArgs e)
         {
+            
             txtBuscar.ResetText();
             cbxCriterio.ResetText();
             this.consulta = "Departamento";
@@ -184,6 +192,7 @@ namespace SistemaComprasS
 
         private void BtMantArticulo_Click(object sender, EventArgs e)
         {
+            
             txtBuscar.ResetText();
             cbxCriterio.ResetText();
             this.consulta = "Articulo";
@@ -192,6 +201,7 @@ namespace SistemaComprasS
 
         private void BtMantMedida_Click(object sender, EventArgs e)
         {
+            
             txtBuscar.ResetText();
             cbxCriterio.ResetText();
             this.consulta = "UndMedida";
@@ -200,6 +210,7 @@ namespace SistemaComprasS
 
         private void btnMantProveedor_Click(object sender, EventArgs e)
         {
+            
             txtBuscar.ResetText();
             cbxCriterio.ResetText();
             this.consulta = "Proveedor";
@@ -208,6 +219,7 @@ namespace SistemaComprasS
 
         private void BtMantSolicitud_Click(object sender, EventArgs e)
         {
+           
             txtBuscar.ResetText();
             cbxCriterio.ResetText();
             this.consulta = "Solicitud";
@@ -216,54 +228,13 @@ namespace SistemaComprasS
 
         private void BtMantOrden_Click(object sender, EventArgs e)
         {
+            
             txtBuscar.ResetText();
             cbxCriterio.ResetText();
             this.consulta = "Orden";
             ejecutarConsulta();
         }
-
-        /*private void dgvResultado_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        { 
-            if (consulta == "Marca") { 
-                DataGridViewRow row = this.dgvResultado.SelectedRows[0];
-                FrmEdMarca frm = new FrmEdMarca();
-
-                int idMarca = frm.IdMarca;
-                string idMarcaS = string.Empty + idMarca;
-                idMarcaS = row.Cells[0].Value.ToString();
-
-                frm.Descripcion = row.Cells[1].Value.ToString();
-
-                string estadoS = Convert.ToString(frm.Estado);
-                estadoS = row.Cells[2].Value.ToString();
-
-                frm.Modo = "E";
-                frm.con = con;
-                frm.ShowDialog();
-            } else if(consulta == "Departamento")
-            {
-                DataGridViewRow row = this.dgvResultado.SelectedRows[0];
-                FrmEdDepartamento frm = new FrmEdDepartamento();
-
-                int idDepartamento = frm.IdDepartamento;
-                string idDepartamentoS = string.Empty + idDepartamento;
-                idDepartamentoS = row.Cells[0].Value.ToString();
-
-                frm.Descripcion = row.Cells[1].Value.ToString();
-
-                string estadoS = Convert.ToString(frm.Estado);
-                estadoS = row.Cells[2].Value.ToString();
-
-                frm.Modo = "E";
-                frm.con = con;
-                frm.ShowDialog();
-            } 
-
-
-        }*/
-
-      
-
+        
         private void ejecutarConsulta()
         {
             try
@@ -277,16 +248,22 @@ namespace SistemaComprasS
                     sql += " order by " + cbxCriterio.Text;
                 }
                 SqlDataAdapter da = new SqlDataAdapter(sql, con);
-                DataTable dt = new DataTable();
+                dt = new DataTable();
                 da.Fill(dt);
                 dgvResultado.DataSource = dt;
                 dgvResultado.Refresh();
+                //dt.Clear();
+                //   dgvResultado.Dispose();
+
+
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al ejecutar consulta: " + ex.Message);
             }
+
+
         }
 
         private void ejecutarConsultaBD(string pSQL)
@@ -297,11 +274,15 @@ namespace SistemaComprasS
                 oCon.Open();
 
                 SqlDataAdapter oDa = new SqlDataAdapter(pSQL, oCon);
-                DataTable oTable = new DataTable();
+                
+                oTable = new DataTable();
                 oDa.Fill(oTable);
                 dgvResultado.DataSource = oTable;
                 dgvResultado.Refresh();
-            } catch (Exception ex) { MessageBox.Show("No se pudo ejecutar la consulta."); }
+                
+                
+            
+            } catch (Exception ex) { MessageBox.Show("No se pudo ejecutar la consulta." + ex); }
            
         }
 
@@ -521,8 +502,8 @@ namespace SistemaComprasS
 
         private void MainView_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'sistemaComprasDataSet.Empleado' Puede moverla o quitarla según sea necesario.
-            this.empleadoTableAdapter.Fill(this.sistemaComprasDataSet.Empleado);
+        //    // TODO: esta línea de código carga datos en la tabla 'sistemaComprasDataSet.Empleado' Puede moverla o quitarla según sea necesario.
+        //    this.empleadoTableAdapter.Fill(this.sistemaComprasDataSet.Empleado);
 
         }
 
@@ -545,10 +526,12 @@ namespace SistemaComprasS
                     sql += " order by " + cbxCriterio.Text;
                 }
                 SqlDataAdapter da = new SqlDataAdapter(sql, con);
-                DataTable dt = new DataTable();
+                dt = new DataTable();
                 da.Fill(dt);
                 dgvResultado.DataSource = dt;
-                dgvResultado.Refresh();
+                
+                //dt.Rows.Clear();// If dgv is bound to datatable
+                //dgvResultado.Refresh();
 
             }
             catch (Exception ex)
@@ -556,6 +539,424 @@ namespace SistemaComprasS
                 MessageBox.Show("Error al ejecutar consulta: " + ex.Message);
             }
 
+        }
+
+        private void writeFileLine(string pLine)
+        {
+            if (this.consulta == "Marca")
+            {
+                using (System.IO.StreamWriter w = File.AppendText("C:\\tmp\\Marcas.csv"))
+                {
+
+                    w.WriteLine(pLine);
+                    
+                }
+            }
+            else if (this.consulta == "Departamento")
+            {
+                using (System.IO.StreamWriter w = File.AppendText("C:\\tmp\\Departamentos.csv"))
+                {
+                    w.WriteLine(pLine);
+                }
+            }
+            else if (this.consulta == "UndMedida")
+            {
+                using (System.IO.StreamWriter w = File.AppendText("C:\\tmp\\UnidadMedida.csv"))
+                {
+                    w.WriteLine(pLine);
+                }
+            }
+            else if (this.consulta == "Empleado")
+            {
+                using (System.IO.StreamWriter w = File.AppendText("C:\\tmp\\Empleados.csv"))
+                {
+                    w.WriteLine(pLine);
+                }
+            }
+            else if (this.consulta == "Articulo")
+            {
+                using (System.IO.StreamWriter w = File.AppendText("C:\\tmp\\Articulos.csv"))
+                {
+                    w.WriteLine(pLine);
+                }
+            }
+            else if (this.consulta == "Orden")
+            {
+                using (System.IO.StreamWriter w = File.AppendText("C:\\tmp\\Ordenes.csv"))
+                {
+                    w.WriteLine(pLine);
+                }
+            }
+            else if (this.consulta == "Proveedor")
+            {
+                using (System.IO.StreamWriter w = File.AppendText("C:\\tmp\\Proveedores.csv"))
+                {
+                    w.WriteLine(pLine);
+                }
+            }
+            else if (this.consulta == "Solicitud")
+            {
+                using (System.IO.StreamWriter w = File.AppendText("C:\\tmp\\Solicitudes.csv"))
+                {
+                    w.WriteLine(pLine);
+                }
+            }
+          
+        }
+        private void writeFileHeader(string pLine)
+        {
+            if (this.consulta == "Marca")
+            {
+                using (System.IO.StreamWriter w = File.CreateText("C:\\tmp\\Marcas.csv"))
+                {
+                    w.WriteLine(pLine);
+                }
+            }
+            else if (this.consulta == "Departamento")
+            {
+                using (System.IO.StreamWriter w = File.CreateText("C:\\tmp\\Departamentos.csv"))
+                {
+              
+                    w.WriteLine(pLine);
+                }
+            }
+            else if (this.consulta == "UndMedida")
+            {
+                using (System.IO.StreamWriter w = File.CreateText("C:\\tmp\\UnidadMedida.csv"))
+                {
+                    w.WriteLine(pLine);
+                }
+            }
+            else if (this.consulta == "Empleado")
+            {
+                using (System.IO.StreamWriter w = File.CreateText("C:\\tmp\\Empleados.csv"))
+                {
+                    w.WriteLine(pLine);
+                }
+            }
+            else if (this.consulta == "Articulo")
+            {
+                using (System.IO.StreamWriter w = File.CreateText("C:\\tmp\\Articulos.csv"))
+                {
+                    w.WriteLine(pLine);
+                }
+            }
+            else if (this.consulta == "Orden")
+            {
+                using (System.IO.StreamWriter w = File.CreateText("C:\\tmp\\Ordenes.csv"))
+                {
+                    w.WriteLine(pLine);
+                }
+            }
+            else if (this.consulta == "Proveedor")
+            {
+                using (System.IO.StreamWriter w = File.CreateText("C:\\tmp\\Proveedores.csv"))
+                {
+                    w.WriteLine(pLine);
+                }
+            }
+            else if (this.consulta == "Solicitud")
+            {
+                using (System.IO.StreamWriter w = File.CreateText("C:\\tmp\\Solicitudes.csv"))
+                {
+                    w.WriteLine(pLine);
+                }
+            }
+           
+        }
+
+        private void btnReporte_Click(object sender, EventArgs e)
+        {
+            if (this.consulta == "Marca")
+            {
+                if (cbxCriterio.Text.Length > 0)
+                {
+                    writeFileHeader("ID, Descripcion, Estado");
+
+                    foreach (DataRow row in oTable.Rows)
+                    {
+                        string linea = "";
+                        foreach (DataColumn dc in oTable.Columns)
+                        {
+                            linea += row[dc].ToString() + ",";
+                        }
+                        writeFileLine(linea);
+                    }
+
+                }
+                else
+                {
+
+                    writeFileHeader("ID, Descripcion, Estado");
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        string linea = "";
+                        foreach (DataColumn dc in dt.Columns)
+                        {
+                            linea += row[dc].ToString() + ",";
+                        }
+                        writeFileLine(linea);
+                    }
+
+                }
+                Process.Start(@"C:\\tmp\\Marcas.csv");
+
+            }
+            else if (this.consulta == "Departamento")
+            {
+                if (cbxCriterio.Text.Length > 0)
+                {
+                    writeFileHeader("ID, Descripcion, Estado");
+
+                    foreach (DataRow row in oTable.Rows)
+                    {
+                        string linea = "";
+
+                        foreach (DataColumn dc in oTable.Columns)
+                        {
+                            linea += row[dc].ToString() + ",";
+                        }
+
+                        writeFileLine(linea);
+
+                    }
+
+                }
+                else
+                {
+
+                    writeFileHeader("ID, Descripcion, Estado");
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        string linea = "";
+                        foreach (DataColumn dc in dt.Columns)
+                        {
+                            linea += row[dc].ToString() + ",";
+                        }
+                        writeFileLine(linea);
+                    }
+
+                }
+                Process.Start(@"C:\\tmp\\Departamentos.csv");
+            }
+            else if (this.consulta == "UndMedida")
+            {
+                if (cbxCriterio.Text.Length > 0)
+                {
+                    writeFileHeader("ID, Descripcion, Estado");
+
+                    foreach (DataRow row in oTable.Rows)
+                    {
+                        string linea = "";
+                        foreach (DataColumn dc in oTable.Columns)
+                        {
+                            linea += row[dc].ToString() + ",";
+                        }
+                        writeFileLine(linea);
+                    }
+
+                }
+                else
+                {
+
+                    writeFileHeader("ID, Descripcion, Estado");
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        string linea = "";
+                        foreach (DataColumn dc in dt.Columns)
+                        {
+                            linea += row[dc].ToString() + ",";
+                        }
+                        writeFileLine(linea);
+                    }
+
+                }
+                Process.Start(@"C:\\tmp\\UnidadMedida.csv");
+            }
+            else if (this.consulta == "Empleado")
+            {
+                if (cbxCriterio.Text.Length > 0)
+                {
+
+                    writeFileHeader("ID, Cedula, Nombre, Departamento, Estado");
+
+                    foreach (DataRow row in oTable.Rows)
+                    {
+                        string linea = "";
+                        foreach (DataColumn dc in oTable.Columns)
+                        {
+                            linea += row[dc].ToString() + ",";
+                        }
+                        writeFileLine(linea);
+                    }
+
+                }
+                else
+                {
+
+                    writeFileHeader("ID, Cedula, Nombre, Departamento, Estado");
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        string linea = "";
+                        foreach (DataColumn dc in dt.Columns)
+                        {
+                            linea += row[dc].ToString() + ",";
+                        }
+                        writeFileLine(linea);
+                    }
+
+                }
+                Process.Start(@"C:\\tmp\\Empleados.csv");
+            }
+            else if (this.consulta == "Articulo")
+            {
+                if (cbxCriterio.Text.Length > 0)
+                {
+
+                    writeFileHeader("ID, Descripcion, Marca, Medida, Existencia, Estado");
+
+                    foreach (DataRow row in oTable.Rows)
+                    {
+                        string linea = "";
+                        foreach (DataColumn dc in oTable.Columns)
+                        {
+                            linea += row[dc].ToString() + ",";
+                        }
+                        writeFileLine(linea);
+                    }
+
+                }
+                else
+                {
+
+                    writeFileHeader("ID, Descripcion, Marca, Medida, Existencia, Estado");
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        string linea = "";
+                        foreach (DataColumn dc in dt.Columns)
+                        {
+                            linea += row[dc].ToString() + ",";
+                        }
+                        writeFileLine(linea);
+                    }
+
+                }
+                Process.Start(@"C:\\tmp\\Articulos.csv");
+            }
+            else if (this.consulta == "Orden")
+            {
+                if (cbxCriterio.Text.Length > 0)
+                {
+
+                    writeFileHeader("ID, Solicitud, Fecha, Articulo, Cantidad, Medida, Marca, Costo, Estado");
+
+                    foreach (DataRow row in oTable.Rows)
+                    {
+                        string linea = "";
+                        foreach (DataColumn dc in oTable.Columns)
+                        {
+                            linea += row[dc].ToString() + ",";
+                        }
+                        writeFileLine(linea);
+                    }
+
+                }
+                else
+                {
+
+                    writeFileHeader("ID, Solicitud, Fecha, Articulo, Cantidad, Medida, Marca, Costo, Estado");
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        string linea = "";
+                        foreach (DataColumn dc in dt.Columns)
+                        {
+                            linea += row[dc].ToString() + ",";
+                        }
+                        writeFileLine(linea);
+                    }
+
+                }
+                Process.Start(@"C:\\tmp\\Ordenes.csv");
+            }
+            else if (this.consulta == "Proveedor")
+            {
+
+                if (cbxCriterio.Text.Length > 0)
+                {
+
+                    writeFileHeader("ID, Tipo de Identificación, identificación, Nombre, Estado");
+
+                    foreach (DataRow row in oTable.Rows)
+                    {
+                        string linea = "";
+                        foreach (DataColumn dc in oTable.Columns)
+                        {
+                            linea += row[dc].ToString() + ",";
+                        }
+                        writeFileLine(linea);
+                    }
+
+                }
+                else
+                {
+
+                    writeFileHeader("ID, Tipo de Identificación, identificación, Nombre, Estado");
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        string linea = "";
+                        foreach (DataColumn dc in dt.Columns)
+                        {
+                            linea += row[dc].ToString() + ",";
+                        }
+                        writeFileLine(linea);
+                    }
+
+                }
+                Process.Start(@"C:\\tmp\\Proveedores.csv");
+            }
+            else if (this.consulta == "Solicitud")
+            {
+                if (cbxCriterio.Text.Length > 0)
+                {
+
+                    writeFileHeader("ID, Empleado, Fecha, Articulo, Cantidad, Medida, Estado");
+
+                    foreach (DataRow row in oTable.Rows)
+                    {
+                        string linea = "";
+                        foreach (DataColumn dc in oTable.Columns)
+                        {
+                            linea += row[dc].ToString() + ",";
+                        }
+                        writeFileLine(linea);
+                    }
+
+                }
+                else
+                {
+
+                    writeFileHeader("ID, Empleado, Fecha, Articulo, Cantidad, Medida, Estado");
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        string linea = "";
+                        foreach (DataColumn dc in dt.Columns)
+                        {
+                            linea += row[dc].ToString() + ",";
+                        }
+                        writeFileLine(linea);
+                    }
+
+                }
+                Process.Start(@"C:\\tmp\\Solicitudes.csv");
+            }
         }
     }
 }

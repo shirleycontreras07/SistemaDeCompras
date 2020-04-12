@@ -1,0 +1,32 @@
+
+        private void cmdExportar_Click(object sender, EventArgs e)
+        {
+            writeFileHeader("Matricula, Nombre, Colegio, Genero");
+
+            foreach (DataRow row in oDt.Rows)
+            {
+                string linea = "";
+                foreach (DataColumn dc in oDt.Columns)
+                {
+                    linea += row[dc].ToString() + ",";
+                }
+                writeFileLine(linea);
+            }
+
+            Process.Start(@"f:\prueba.csv");
+        }
+
+        private void writeFileLine(string pLine)
+        {
+            using (System.IO.StreamWriter w = File.AppendText("f:\\prueba.csv"))
+            {
+                w.WriteLine(pLine);
+            }
+        }
+        private void writeFileHeader(string pLine)
+        {
+            using (System.IO.StreamWriter w = File.CreateText("f:\\prueba.csv"))
+            {
+                w.WriteLine(pLine);
+            }
+        }

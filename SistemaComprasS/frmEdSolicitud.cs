@@ -50,17 +50,18 @@ namespace SistemaComprasS
                 cbxArticulo.SelectedIndex = Articulo;
                 nudCantidad.Value = Cantidad;
                 cbxMedida.SelectedIndex = Medida;
+                cbEstado.Checked = Estado;
 
-                if (cbEstado.Checked == true)
-                {
-                    Estado = true;
-                    EstadoValue = 1;
-                }
-                else
-                {
-                    Estado = false;
-                    
-                }
+                //if (cbEstado.Checked == true)
+                //{
+                //    Estado = true;
+                //    EstadoValue = 1;
+                //}
+                //else
+                //{
+                //    Estado = false;
+
+                //}
 
                 this.Text += " : Editando";
             }
@@ -77,7 +78,12 @@ namespace SistemaComprasS
                 sql = "insert into Solicitud values ('";
                 sql += cbxEmpleado.SelectedValue + "', '" + this.dtpSolicitud.Text + "','";
                 sql += cbxArticulo.SelectedValue + "', '" + Convert.ToInt32(nudCantidad.Value) + "', '" 
-                    + cbxMedida.SelectedValue + "', '" + EstadoValue + "')";
+                    + cbxMedida.SelectedValue + "', '" + cbEstado.Checked + "')";
+
+                if (cbEstado.Checked)
+                {
+
+                }
             }
             else
             {
@@ -91,7 +97,7 @@ namespace SistemaComprasS
                 sql += "Articulo = '" + cbxArticulo.SelectedValue + "',";
                 sql += "Cantidad = '" + Convert.ToInt32(nudCantidad.Value) + "',";
                 sql += "Medida = '" + cbxMedida.SelectedValue + "',";
-                sql += "Estado = '" + EstadoValue + "'";
+                sql += "Estado = '" + cbEstado.Checked + "'";
                 sql += " where IdSolicitud = " + txtIdSolicitud.Text;
 
             }

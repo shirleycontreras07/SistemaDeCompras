@@ -50,16 +50,17 @@ namespace SistemaComprasS
                 cbxMedida.SelectedIndex = Medida;
                 cbxMarca.SelectedIndex = Marca;
                 Costo = nudCosto.Value;
-               
+                cbEstado.Checked = Estado;
 
-                if (cbEstado.Checked == true)
-                {
-                    Estado = true;
-                }
-                else
-                {
-                    Estado = false;
-                }
+
+                //if (cbEstado.Checked == true)
+                //{
+                //    Estado = true;
+                //}
+                //else
+                //{
+                //    Estado = false;
+                //}
 
                 this.Text += " : Editando";
             }
@@ -71,20 +72,20 @@ namespace SistemaComprasS
             if (Modo.Equals("C"))
             {
                 sql = "insert into Orden values ('";
-                sql += cbxSolicitud.SelectedIndex + "', '" + this.dtpOrden.Text + "', '" + Estado + "', '" + cbxArticulo.SelectedIndex + "', '" 
-                    + nudCantidad.Value + "', '" + cbxMedida.SelectedIndex + "', '" + cbxMarca.SelectedIndex + "', '" + Costo + "')";
+                sql += cbxSolicitud.SelectedIndex + "', '" + this.dtpOrden.Text + "', '" + cbEstado.Checked + "', '" + cbxArticulo.SelectedValue + "', '" 
+                    + nudCantidad.Value + "', '" + cbxMedida.SelectedValue + "', '" + cbxMarca.SelectedValue + "', '" + Costo + "')";
             }
             else
             {
                 sql += "update Orden set ";
 
-                sql += "Solicitud = '" + cbxSolicitud.SelectedIndex + "',";
+                sql += "Solicitud = '" + cbxSolicitud.SelectedValue + "',";
                 sql += "Fecha = '" + this.dtpOrden.Text + "',";
-                sql += "Estado = '" + Estado + "'";
-                sql += "Articulo = '" + cbxArticulo.SelectedIndex + "',";
+                sql += "Estado = '" + cbEstado.Checked + "'";
+                sql += "Articulo = '" + cbxArticulo.SelectedValue + "',";
                 sql += "Cantidad = '" + nudCantidad.Value + "',";
-                sql += "Medida = '" + cbxMedida.SelectedIndex + "',";
-                sql += "Marca = '" + cbxMarca.SelectedIndex + "'";
+                sql += "Medida = '" + cbxMedida.SelectedValue + "',";
+                sql += "Marca = '" + cbxMarca.SelectedValue+ "'";
                 sql += "Costo = '" + Costo + "'";
 
                 sql += " where IdOrden = " + txtIdOrden.Text;

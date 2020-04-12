@@ -45,19 +45,10 @@ namespace SistemaComprasS
             if (!Modo.Equals("C"))
             {
                 txtIdProveedor.Text = IdProveedor.ToString();
-                cbxTipoIdentificacion.SelectedValue = TipoIdentificacion;
+                cbxTipoIdentificacion.SelectedIndex = TipoIdentificacion;
                 txtIdentificacion.Text = Identificacion;
                 txtNombre.Text = Nombre;
-                
-
-                if (cbEstado.Checked == true)
-                {
-                    Estado = true;
-                }
-                else
-                {
-                    Estado = false;
-                }
+                cbEstado.Checked = Estado;
 
                 this.Text += " : Editando";
             }
@@ -79,7 +70,7 @@ namespace SistemaComprasS
                     {
                         sql = "insert into Proveedor values ('";
                         sql += cbxTipoIdentificacion.SelectedValue + "', '" + txtIdentificacion.Text + "', '"
-                            + txtNombre.Text + "', '" + Estado + "')";
+                            + txtNombre.Text + "', '" + cbEstado.Checked + "')";
                     }
                     else
                     {
@@ -88,7 +79,7 @@ namespace SistemaComprasS
                         sql += "TipoIdentificacion = '" + cbxTipoIdentificacion.SelectedValue + "',";
                         sql += "Identificacion = '" + txtIdentificacion.Text + "',";
                         sql += "Nombre = '" + txtNombre.Text + "',";
-                        sql += "Estado = '" + Estado + "'";
+                        sql += "Estado = '" + cbEstado.Checked + "'";
                         sql += " where IdProveedor = " + txtIdProveedor.Text;
 
                     }
@@ -111,9 +102,11 @@ namespace SistemaComprasS
                     string sql = "";
                     if (Modo.Equals("C"))
                     {
+                        Estado = true;
+
                         sql = "insert into Proveedor values ('";
                         sql += cbxTipoIdentificacion.SelectedValue + "', '" + txtIdentificacion.Text + "', '"
-                            + txtNombre.Text + "', '" + Estado + "')";
+                            + txtNombre.Text + "', '" + cbEstado.Checked + "')";
                     }
                     else
                     {
@@ -122,7 +115,7 @@ namespace SistemaComprasS
                         sql += "TipoIdentificacion = '" + cbxTipoIdentificacion.SelectedValue + "',";
                         sql += "Identificacion = '" + txtIdentificacion.Text + "',";
                         sql += "Nombre = '" + txtNombre.Text + "',";
-                        sql += "Estado = '" + Estado + "'";
+                        sql += "Estado = '" + cbEstado.Checked + "'";
                         sql += " where IdProveedor = " + txtIdProveedor.Text;
 
                     }
