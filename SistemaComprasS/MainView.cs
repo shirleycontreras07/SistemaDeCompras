@@ -857,7 +857,7 @@ namespace SistemaComprasS
                 if (cbxCriterio.Text.Length > 0)
                 {
 
-                    writeFileHeader("ID, Solicitud, Fecha, Articulo, Cantidad, Medida, Marca, Costo, Estado");
+                    writeFileHeader("ID, Solicitud, Fecha, Estado, Articulo, Cantidad, Medida, Marca, Costo");
 
                     foreach (DataRow row in oTable.Rows)
                     {
