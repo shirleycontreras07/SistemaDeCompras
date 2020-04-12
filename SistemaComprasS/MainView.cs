@@ -873,7 +873,7 @@ namespace SistemaComprasS
                 else
                 {
 
-                    writeFileHeader("ID, Solicitud, Fecha, Articulo, Cantidad, Medida, Marca, Costo, Estado");
+                    writeFileHeader("ID, Solicitud, Fecha, Estado, Articulo, Cantidad, Medida, Marca, Costo");
 
                     foreach (DataRow row in dt.Rows)
                     {
