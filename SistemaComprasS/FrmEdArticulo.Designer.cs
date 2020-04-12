@@ -53,6 +53,8 @@
             this.undMedidaTableAdapter = new SistemaComprasS.SistemaComprasDataSetTableAdapters.UndMedidaTableAdapter();
             this.sistemaComprasDataSetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.marcaTableAdapter = new SistemaComprasS.SistemaComprasDataSetTableAdapters.MarcaTableAdapter();
+            this.nudCosto = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.undMedidaBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sistemaComprasDataSet)).BeginInit();
@@ -61,13 +63,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.sistemaComprasDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.undMedidaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sistemaComprasDataSetBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCosto)).BeginInit();
             this.SuspendLayout();
             // 
             // btnEliminar
             // 
             this.btnEliminar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEliminar.BackgroundImage")));
             this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnEliminar.Location = new System.Drawing.Point(136, 217);
+            this.btnEliminar.Location = new System.Drawing.Point(139, 258);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(57, 51);
             this.btnEliminar.TabIndex = 10;
@@ -79,7 +82,7 @@
             this.btnGuardar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnGuardar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGuardar.BackgroundImage")));
             this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnGuardar.Location = new System.Drawing.Point(41, 217);
+            this.btnGuardar.Location = new System.Drawing.Point(44, 258);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(57, 51);
             this.btnGuardar.TabIndex = 9;
@@ -90,6 +93,8 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.LightGray;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.nudCosto);
+            this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.cbxMedida);
             this.panel1.Controls.Add(this.cbxMarca);
             this.panel1.Controls.Add(this.txtIdArticulo);
@@ -104,7 +109,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(217, 199);
+            this.panel1.Size = new System.Drawing.Size(217, 229);
             this.panel1.TabIndex = 8;
             // 
             // cbxMedida
@@ -254,11 +259,29 @@
             // 
             this.marcaTableAdapter.ClearBeforeFill = true;
             // 
+            // nudCosto
+            // 
+            this.nudCosto.DecimalPlaces = 2;
+            this.nudCosto.Location = new System.Drawing.Point(93, 186);
+            this.nudCosto.Name = "nudCosto";
+            this.nudCosto.Size = new System.Drawing.Size(100, 20);
+            this.nudCosto.TabIndex = 28;
+            this.nudCosto.ThousandsSeparator = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(9, 193);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(71, 13);
+            this.label8.TabIndex = 27;
+            this.label8.Text = "Costo unitario";
+            // 
             // FrmEdArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(249, 289);
+            this.ClientSize = new System.Drawing.Size(249, 325);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.panel1);
@@ -274,6 +297,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.sistemaComprasDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.undMedidaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sistemaComprasDataSetBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCosto)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -303,5 +327,7 @@
         private System.Windows.Forms.BindingSource sistemaComprasDataSetBindingSource1;
         private System.Windows.Forms.BindingSource marcaBindingSource;
         private SistemaComprasDataSetTableAdapters.MarcaTableAdapter marcaTableAdapter;
+        private System.Windows.Forms.NumericUpDown nudCosto;
+        private System.Windows.Forms.Label label8;
     }
 }

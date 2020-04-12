@@ -20,6 +20,7 @@ namespace SistemaComprasS
         public int Marca { get; set; }
         public int Medida { get; set; }
         public int Existencia { get; set; }
+        public decimal Costo { get; set; }
         public bool Estado { get; set; }
         public string Modo { get; set; }
         public FrmEdArticulo()
@@ -45,18 +46,8 @@ namespace SistemaComprasS
                 cbxMarca.SelectedIndex = Marca;
                 cbxMedida.SelectedIndex = Medida;
                 nudExistencia.Value = Existencia;
+                nudCosto.Value = Costo;
                 cbEstado.Checked = Estado;
-
-
-                //if (cbEstado.Checked == true)
-                //{
-                //    Estado = true;
-                //    EstadoValue = 1;
-                //}
-                //else
-                //{
-                //    Estado = false;
-                //}
 
                 this.Text += " : Editando";
             }
@@ -68,19 +59,20 @@ namespace SistemaComprasS
             if (Modo.Equals("C"))
             {
                 sql = "insert into Articulo values ('";
-                sql += txtDescripcion.Text + "', " + cbxMarca.SelectedValue + " , " 
-                    + cbxMedida.SelectedValue + ", " + Convert.ToInt32(nudExistencia.Value) + ", "  + cbEstado.Checked + " )";
+                sql += txtDescripcion.Text + "', " + cbxMarca.SelectedValue + " , "
+                    + cbxMedida.SelectedValue + ", " + Convert.ToInt32(nudExistencia.Value) + ", " + Convert.ToInt32(nudCosto.Value) + ", '" + cbEstado.Checked + " ')";
             }
             else
             {
-                
+
                 sql += "update Articulo set ";
 
                 sql += "Descripcion = '" + txtDescripcion.Text + "',";
                 sql += "Marca = " + cbxMarca.SelectedValue + ",";
                 sql += "Medida= " + cbxMedida.SelectedValue + ",";
                 sql += "Existencia = " + Convert.ToInt32(nudExistencia.Value) + ",";
-                sql += "Estado = '" + cbEstado.Checked + "'";
+                sql += "Costo = " + Convert.ToInt32(nudCosto.Value) + ",";
+                sql += "Estado = '" + cbEstado.Checked + "' ";
                 sql += " where IdArticulo = " + txtIdArticulo.Text;
                 
 

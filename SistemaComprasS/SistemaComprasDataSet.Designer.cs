@@ -690,6 +690,8 @@ namespace SistemaComprasS {
             
             private global::System.Data.DataColumn columnEstado;
             
+            private global::System.Data.DataColumn columnCosto;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public ArticuloDataTable() {
@@ -773,6 +775,14 @@ namespace SistemaComprasS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn CostoColumn {
+                get {
+                    return this.columnCosto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -808,7 +818,7 @@ namespace SistemaComprasS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ArticuloRow AddArticuloRow(string Descripcion, MarcaRow parentMarcaRowByFK__Articulo__Marca__44FF419A, UndMedidaRow parentUndMedidaRowByFK__Articulo__Medida__45F365D3, int Existencia, bool Estado) {
+            public ArticuloRow AddArticuloRow(string Descripcion, MarcaRow parentMarcaRowByFK__Articulo__Marca__44FF419A, UndMedidaRow parentUndMedidaRowByFK__Articulo__Medida__45F365D3, int Existencia, bool Estado, decimal Costo) {
                 ArticuloRow rowArticuloRow = ((ArticuloRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -816,7 +826,8 @@ namespace SistemaComprasS {
                         null,
                         null,
                         Existencia,
-                        Estado};
+                        Estado,
+                        Costo};
                 if ((parentMarcaRowByFK__Articulo__Marca__44FF419A != null)) {
                     columnValuesArray[2] = parentMarcaRowByFK__Articulo__Marca__44FF419A[0];
                 }
@@ -858,6 +869,7 @@ namespace SistemaComprasS {
                 this.columnMedida = base.Columns["Medida"];
                 this.columnExistencia = base.Columns["Existencia"];
                 this.columnEstado = base.Columns["Estado"];
+                this.columnCosto = base.Columns["Costo"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -875,6 +887,8 @@ namespace SistemaComprasS {
                 base.Columns.Add(this.columnExistencia);
                 this.columnEstado = new global::System.Data.DataColumn("Estado", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEstado);
+                this.columnCosto = new global::System.Data.DataColumn("Costo", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCosto);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnIdArticulo}, true));
                 this.columnIdArticulo.AutoIncrement = true;
@@ -888,6 +902,7 @@ namespace SistemaComprasS {
                 this.columnMarca.AllowDBNull = false;
                 this.columnMedida.AllowDBNull = false;
                 this.columnExistencia.AllowDBNull = false;
+                this.columnCosto.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3940,6 +3955,17 @@ namespace SistemaComprasS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal Costo {
+                get {
+                    return ((decimal)(this[this.tableArticulo.CostoColumn]));
+                }
+                set {
+                    this[this.tableArticulo.CostoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public MarcaRow MarcaRow {
                 get {
                     return ((MarcaRow)(this.GetParentRow(this.Table.ParentRelations["FK__Articulo__Marca__44FF419A"])));
@@ -5386,43 +5412,48 @@ namespace SistemaComprasS.SistemaComprasDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Medida", "Medida");
             tableMapping.ColumnMappings.Add("Existencia", "Existencia");
             tableMapping.ColumnMappings.Add("Estado", "Estado");
+            tableMapping.ColumnMappings.Add("Costo", "Costo");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Articulo] WHERE (([IdArticulo] = @Original_IdArticulo) AND ([Descripcion] = @Original_Descripcion) AND ([Marca] = @Original_Marca) AND ([Medida] = @Original_Medida) AND ([Existencia] = @Original_Existencia) AND ((@IsNull_Estado = 1 AND [Estado] IS NULL) OR ([Estado] = @Original_Estado)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Articulo] WHERE (([IdArticulo] = @Original_IdArticulo) AND ([Descripcion] = @Original_Descripcion) AND ([Marca] = @Original_Marca) AND ([Medida] = @Original_Medida) AND ([Existencia] = @Original_Existencia) AND ([Costo] = @Original_Costo) AND ((@IsNull_Estado = 1 AND [Estado] IS NULL) OR ([Estado] = @Original_Estado)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IdArticulo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IdArticulo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Descripcion", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descripcion", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Marca", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Marca", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Medida", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Medida", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Existencia", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Existencia", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Costo", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Costo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Estado", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Estado", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Estado", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Estado", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Articulo] ([Descripcion], [Marca], [Medida], [Existencia], [Estado]) VALUES (@Descripcion, @Marca, @Medida, @Existencia, @Estado);
-SELECT IdArticulo, Descripcion, Marca, Medida, Existencia, Estado FROM Articulo WHERE (IdArticulo = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Articulo] ([Descripcion], [Marca], [Medida], [Existencia], [Costo], [Estado]) VALUES (@Descripcion, @Marca, @Medida, @Existencia, @Costo, @Estado);
+SELECT IdArticulo, Descripcion, Marca, Medida, Existencia, Costo, Estado FROM Articulo WHERE (IdArticulo = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Descripcion", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descripcion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Marca", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Marca", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Medida", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Medida", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Existencia", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Existencia", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Costo", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Costo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Estado", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Estado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Articulo] SET [Descripcion] = @Descripcion, [Marca] = @Marca, [Medida] = @Medida, [Existencia] = @Existencia, [Estado] = @Estado WHERE (([IdArticulo] = @Original_IdArticulo) AND ([Descripcion] = @Original_Descripcion) AND ([Marca] = @Original_Marca) AND ([Medida] = @Original_Medida) AND ([Existencia] = @Original_Existencia) AND ((@IsNull_Estado = 1 AND [Estado] IS NULL) OR ([Estado] = @Original_Estado)));
-SELECT IdArticulo, Descripcion, Marca, Medida, Existencia, Estado FROM Articulo WHERE (IdArticulo = @IdArticulo)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Articulo] SET [Descripcion] = @Descripcion, [Marca] = @Marca, [Medida] = @Medida, [Existencia] = @Existencia, [Costo] = @Costo, [Estado] = @Estado WHERE (([IdArticulo] = @Original_IdArticulo) AND ([Descripcion] = @Original_Descripcion) AND ([Marca] = @Original_Marca) AND ([Medida] = @Original_Medida) AND ([Existencia] = @Original_Existencia) AND ([Costo] = @Original_Costo) AND ((@IsNull_Estado = 1 AND [Estado] IS NULL) OR ([Estado] = @Original_Estado)));
+SELECT IdArticulo, Descripcion, Marca, Medida, Existencia, Costo, Estado FROM Articulo WHERE (IdArticulo = @IdArticulo)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Descripcion", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descripcion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Marca", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Marca", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Medida", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Medida", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Existencia", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Existencia", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Costo", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Costo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Estado", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Estado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IdArticulo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IdArticulo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Descripcion", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descripcion", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Marca", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Marca", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Medida", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Medida", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Existencia", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Existencia", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Costo", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Costo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Estado", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Estado", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Estado", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Estado", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IdArticulo", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "IdArticulo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5441,8 +5472,8 @@ SELECT IdArticulo, Descripcion, Marca, Medida, Existencia, Estado FROM Articulo 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT IdArticulo, Descripcion, Marca, Medida, Existencia, Estado FROM dbo.Articu" +
-                "lo";
+            this._commandCollection[0].CommandText = "SELECT        IdArticulo, Descripcion, Marca, Medida, Existencia, Costo, Estado\r\n" +
+                "FROM            Articulo";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -5503,7 +5534,7 @@ SELECT IdArticulo, Descripcion, Marca, Medida, Existencia, Estado FROM Articulo 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_IdArticulo, string Original_Descripcion, int Original_Marca, int Original_Medida, int Original_Existencia, global::System.Nullable<bool> Original_Estado) {
+        public virtual int Delete(int Original_IdArticulo, string Original_Descripcion, int Original_Marca, int Original_Medida, int Original_Existencia, decimal Original_Costo, global::System.Nullable<bool> Original_Estado) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_IdArticulo));
             if ((Original_Descripcion == null)) {
                 throw new global::System.ArgumentNullException("Original_Descripcion");
@@ -5514,13 +5545,14 @@ SELECT IdArticulo, Descripcion, Marca, Medida, Existencia, Estado FROM Articulo 
             this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_Marca));
             this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_Medida));
             this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_Existencia));
+            this.Adapter.DeleteCommand.Parameters[5].Value = ((decimal)(Original_Costo));
             if ((Original_Estado.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((bool)(Original_Estado.Value));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((bool)(Original_Estado.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -5542,7 +5574,7 @@ SELECT IdArticulo, Descripcion, Marca, Medida, Existencia, Estado FROM Articulo 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Descripcion, int Marca, int Medida, int Existencia, global::System.Nullable<bool> Estado) {
+        public virtual int Insert(string Descripcion, int Marca, int Medida, int Existencia, decimal Costo, global::System.Nullable<bool> Estado) {
             if ((Descripcion == null)) {
                 throw new global::System.ArgumentNullException("Descripcion");
             }
@@ -5552,11 +5584,12 @@ SELECT IdArticulo, Descripcion, Marca, Medida, Existencia, Estado FROM Articulo 
             this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Marca));
             this.Adapter.InsertCommand.Parameters[2].Value = ((int)(Medida));
             this.Adapter.InsertCommand.Parameters[3].Value = ((int)(Existencia));
+            this.Adapter.InsertCommand.Parameters[4].Value = ((decimal)(Costo));
             if ((Estado.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((bool)(Estado.Value));
+                this.Adapter.InsertCommand.Parameters[5].Value = ((bool)(Estado.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -5578,7 +5611,7 @@ SELECT IdArticulo, Descripcion, Marca, Medida, Existencia, Estado FROM Articulo 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Descripcion, int Marca, int Medida, int Existencia, global::System.Nullable<bool> Estado, int Original_IdArticulo, string Original_Descripcion, int Original_Marca, int Original_Medida, int Original_Existencia, global::System.Nullable<bool> Original_Estado, int IdArticulo) {
+        public virtual int Update(string Descripcion, int Marca, int Medida, int Existencia, decimal Costo, global::System.Nullable<bool> Estado, int Original_IdArticulo, string Original_Descripcion, int Original_Marca, int Original_Medida, int Original_Existencia, decimal Original_Costo, global::System.Nullable<bool> Original_Estado, int IdArticulo) {
             if ((Descripcion == null)) {
                 throw new global::System.ArgumentNullException("Descripcion");
             }
@@ -5588,31 +5621,33 @@ SELECT IdArticulo, Descripcion, Marca, Medida, Existencia, Estado FROM Articulo 
             this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Marca));
             this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Medida));
             this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Existencia));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((decimal)(Costo));
             if ((Estado.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((bool)(Estado.Value));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((bool)(Estado.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_IdArticulo));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_IdArticulo));
             if ((Original_Descripcion == null)) {
                 throw new global::System.ArgumentNullException("Original_Descripcion");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_Descripcion));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_Descripcion));
             }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_Marca));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_Medida));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_Existencia));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_Marca));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_Medida));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_Existencia));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((decimal)(Original_Costo));
             if ((Original_Estado.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((bool)(Original_Estado.Value));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((bool)(Original_Estado.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(IdArticulo));
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(IdArticulo));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5633,8 +5668,8 @@ SELECT IdArticulo, Descripcion, Marca, Medida, Existencia, Estado FROM Articulo 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Descripcion, int Marca, int Medida, int Existencia, global::System.Nullable<bool> Estado, int Original_IdArticulo, string Original_Descripcion, int Original_Marca, int Original_Medida, int Original_Existencia, global::System.Nullable<bool> Original_Estado) {
-            return this.Update(Descripcion, Marca, Medida, Existencia, Estado, Original_IdArticulo, Original_Descripcion, Original_Marca, Original_Medida, Original_Existencia, Original_Estado, Original_IdArticulo);
+        public virtual int Update(string Descripcion, int Marca, int Medida, int Existencia, decimal Costo, global::System.Nullable<bool> Estado, int Original_IdArticulo, string Original_Descripcion, int Original_Marca, int Original_Medida, int Original_Existencia, decimal Original_Costo, global::System.Nullable<bool> Original_Estado) {
+            return this.Update(Descripcion, Marca, Medida, Existencia, Costo, Estado, Original_IdArticulo, Original_Descripcion, Original_Marca, Original_Medida, Original_Existencia, Original_Costo, Original_Estado, Original_IdArticulo);
         }
     }
     
