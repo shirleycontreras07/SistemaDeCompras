@@ -30,15 +30,16 @@ namespace SistemaComprasS
             {
                 txtIdDepartamento.Text = IdDepartamento.ToString();
                 txtNombreDepartamento.Text = Descripcion;
+                cbEstado.Checked = Estado;
 
-                if (cbEstado.Checked == true)
-                {
-                    Estado = true;
-                }
-                else
-                {
-                    Estado = false;
-                }
+                //if (cbEstado.Checked == true)
+                //{
+                //    Estado = true;
+                //}
+                //else
+                //{
+                //    Estado = false;
+                //}
 
                 this.Text += " : Editando";
             }
@@ -50,14 +51,14 @@ namespace SistemaComprasS
             if (Modo.Equals("C"))
             {
                 sql = "insert into Departamento values ('";
-                sql += txtNombreDepartamento.Text + "', '" + Estado + "')";
+                sql += txtNombreDepartamento.Text + "', '" + cbEstado.Checked + "')";
             }
             else
             {
                 sql += "update Departamento set ";
 
                 sql += "Descripcion = '" + txtNombreDepartamento.Text + "',";
-                sql += "Estado = '" + Estado + "'";
+                sql += "Estado = '" + cbEstado.Checked + "'";
                 sql += " where IdDepartamento = " + txtIdDepartamento.Text;
 
             }

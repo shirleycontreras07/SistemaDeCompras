@@ -32,15 +32,16 @@ namespace SistemaComprasS
 
                 txtIDMarca.Text = IdMarca.ToString();
                 txtNombreMarca.Text = Descripcion;
+                cbEstado.Checked = Estado;
 
-                if (cbEstado.Checked == true)
-                {
-                    Estado = true;
-                } else
-                {
-                    Estado = false;
-                }
-                
+                //if (cbEstado.Checked == true)
+                //{
+                //    Estado = true;
+                //} else
+                //{
+                //    Estado = false;
+                //}
+
                 this.Text += " : Editando";
             }
         }
@@ -56,14 +57,14 @@ namespace SistemaComprasS
             if (Modo.Equals("C"))
             {
                 sql = "insert into Marca values ('";
-                sql += txtNombreMarca.Text + "', '" + Estado + "')";
+                sql += txtNombreMarca.Text + "', '" + cbEstado.Checked + "')";
             }
             else
             {
                 sql += "update Marca set ";
 
-                sql += "Nombre = '" + txtNombreMarca.Text + "',";
-                sql += "Estado = " + Estado;
+                sql += "Descripcion = '" + txtNombreMarca.Text + "',";
+                sql += "Estado = '" + cbEstado.Checked + "'";
                 sql += " where IdMarca = " + txtIDMarca.Text;
 
             }

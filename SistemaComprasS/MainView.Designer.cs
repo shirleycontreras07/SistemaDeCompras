@@ -53,6 +53,7 @@
             this.sistemaComprasDataSet = new SistemaComprasS.SistemaComprasDataSet();
             this.empleadoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.empleadoTableAdapter = new SistemaComprasS.SistemaComprasDataSetTableAdapters.EmpleadoTableAdapter();
+            this.btnReporte = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.Buscador.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -174,6 +175,7 @@
             // 
             this.Buscador.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Buscador.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Buscador.Controls.Add(this.btnReporte);
             this.Buscador.Controls.Add(this.btnActualizar);
             this.Buscador.Controls.Add(this.btAgregar);
             this.Buscador.Controls.Add(this.btBuscar);
@@ -188,24 +190,26 @@
             // 
             // btnActualizar
             // 
+            this.btnActualizar.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnActualizar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnActualizar.BackgroundImage")));
             this.btnActualizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnActualizar.Location = new System.Drawing.Point(608, 3);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(51, 44);
             this.btnActualizar.TabIndex = 5;
-            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.UseVisualStyleBackColor = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btAgregar
             // 
+            this.btAgregar.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.btAgregar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btAgregar.BackgroundImage")));
             this.btAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btAgregar.Location = new System.Drawing.Point(551, 4);
             this.btAgregar.Name = "btAgregar";
             this.btAgregar.Size = new System.Drawing.Size(51, 44);
             this.btAgregar.TabIndex = 4;
-            this.btAgregar.UseVisualStyleBackColor = true;
+            this.btAgregar.UseVisualStyleBackColor = false;
             this.btAgregar.Click += new System.EventHandler(this.btAgregar_Click);
             // 
             // btBuscar
@@ -283,6 +287,7 @@
             // 
             // dgvResultado
             // 
+            this.dgvResultado.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgvResultado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvResultado.Location = new System.Drawing.Point(7, 10);
             this.dgvResultado.Name = "dgvResultado";
@@ -308,6 +313,19 @@
             // empleadoTableAdapter
             // 
             this.empleadoTableAdapter.ClearBeforeFill = true;
+            // 
+            // btnReporte
+            // 
+            this.btnReporte.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnReporte.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnReporte.BackgroundImage")));
+            this.btnReporte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnReporte.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnReporte.Location = new System.Drawing.Point(441, 5);
+            this.btnReporte.Name = "btnReporte";
+            this.btnReporte.Size = new System.Drawing.Size(49, 43);
+            this.btnReporte.TabIndex = 6;
+            this.btnReporte.UseVisualStyleBackColor = false;
+            this.btnReporte.Click += new System.EventHandler(this.btnReporte_Click);
             // 
             // MainView
             // 
@@ -358,6 +376,7 @@
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.BindingSource empleadoBindingSource;
         private SistemaComprasDataSetTableAdapters.EmpleadoTableAdapter empleadoTableAdapter;
+        private System.Windows.Forms.Button btnReporte;
     }
 }
 

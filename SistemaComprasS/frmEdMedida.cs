@@ -31,17 +31,17 @@ namespace SistemaComprasS
             {
                 txtIdMedida.Text = IdUndMedida.ToString();
                 txtNombreMedida.Text = Descripcion;
+                cbEstado.Checked = Estado;
 
-                
-                if (cbEstado.Checked == true)
-                {
-                    Estado = true;
-                    estadoValue = 1;
-                }
-                else
-                {
-                    Estado = false;
-                }
+                //if (cbEstado.Checked == true)
+                //{
+                //    Estado = true;
+                //    estadoValue = 1;
+                //}
+                //else
+                //{
+                //    Estado = false;
+                //}
 
                 this.Text += " : Editando";
             }
@@ -53,14 +53,14 @@ namespace SistemaComprasS
             if (Modo.Equals("C"))
             {
                 sql = "insert into UndMedida values ('";
-                sql += txtNombreMedida.Text + "', '" + estadoValue + "')";
+                sql += txtNombreMedida.Text + "', '" + cbEstado.Checked + "')";
             }
             else
             {
                 sql += "update UndMedida set ";
 
                 sql += "Descripcion = '" + txtNombreMedida.Text + "',";
-                sql += "Estado = '" + estadoValue + "' ";
+                sql += "Estado = '" + cbEstado.Checked + "' ";
                 sql += "where IdUndMedida = '" + txtIdMedida.Text + "'";
 
             }

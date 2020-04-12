@@ -27,41 +27,7 @@ namespace SistemaComprasS
             InitializeComponent();
         }
 
-        //private void llenarListaMedida()
-        //{
-        //    string sSQL = "select Descripcion from UndMedida order by Descripcion";
-        //    SqlCommand ocmd = new SqlCommand(sSQL, con);
-        //    SqlDataReader reader = ocmd.ExecuteReader();
-
-        //    if (reader.HasRows)
-        //    {
-        //        while (reader.Read())
-        //        {
-        //            cbxMedida.Items.Add(reader["Descripcion"].ToString());
-        //        }
-        //        reader.Close();
-        //    }
-        //    cbxMedida.SelectedIndex = 0;
-        //}
-
-
-        //private void llenarListaMarca()
-        //{
-        //    string sSQL = "select Descripcion from Marca order by Descripcion";
-        //    SqlCommand ocmd = new SqlCommand(sSQL, con);
-        //    SqlDataReader reader = ocmd.ExecuteReader();
-
-        //    if (reader.HasRows)
-        //    {
-        //        while (reader.Read())
-        //        {
-        //            cbxMarca.Items.Add(reader["Descripcion"].ToString());
-        //        }
-        //        reader.Close();
-        //    }
-        //    cbxMarca.SelectedIndex = 0;
-        //}
-
+        
         private void FrmEdArticulo_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'sistemaComprasDataSet.Marca' Puede moverla o quitarla según sea necesario.
@@ -79,18 +45,18 @@ namespace SistemaComprasS
                 cbxMarca.SelectedIndex = Marca;
                 cbxMedida.SelectedIndex = Medida;
                 nudExistencia.Value = Existencia;
-                
+                cbEstado.Checked = Estado;
 
-                   
-                if (cbEstado.Checked == true)
-                {
-                    Estado = true;
-                    EstadoValue = 1;
-                }
-                else
-                {
-                    Estado = false;
-                }
+
+                //if (cbEstado.Checked == true)
+                //{
+                //    Estado = true;
+                //    EstadoValue = 1;
+                //}
+                //else
+                //{
+                //    Estado = false;
+                //}
 
                 this.Text += " : Editando";
             }
@@ -102,7 +68,8 @@ namespace SistemaComprasS
             if (Modo.Equals("C"))
             {
                 sql = "insert into Articulo values ('";
-                sql += txtDescripcion.Text + "', " + cbxMarca.SelectedValue + " , " + cbxMedida.SelectedValue + ", " + Convert.ToInt32(nudExistencia.Value) + ", "  + EstadoValue + " )";
+                sql += txtDescripcion.Text + "', " + cbxMarca.SelectedValue + " , " 
+                    + cbxMedida.SelectedValue + ", " + Convert.ToInt32(nudExistencia.Value) + ", "  + cbEstado.Checked + " )";
             }
             else
             {
@@ -113,7 +80,7 @@ namespace SistemaComprasS
                 sql += "Marca = " + cbxMarca.SelectedValue + ",";
                 sql += "Medida= " + cbxMedida.SelectedValue + ",";
                 sql += "Existencia = " + Convert.ToInt32(nudExistencia.Value) + ",";
-                sql += "Estado = '" + EstadoValue + "'";
+                sql += "Estado = '" + cbEstado.Checked + "'";
                 sql += " where IdArticulo = " + txtIdArticulo.Text;
                 
 

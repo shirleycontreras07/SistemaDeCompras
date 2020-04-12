@@ -39,19 +39,19 @@ namespace SistemaComprasS
             if (!Modo.Equals("C"))
             {
                 txtIdEmpleado.Text = IdEmpleado.ToString();
-                txtCedulaEmpleado.Text = Cedula;
-               
+                txtCedulaEmpleado.Text = Cedula; 
                 txtNombreEmpleado.Text = Nombre;
-                cbxDepartamento.SelectedValue = Departamento;
+                cbxDepartamento.SelectedIndex = Departamento;
+                cbEstado.Checked = Estado;
 
-                if (cbEstado.Checked == true)
-                {
-                    Estado = true;
-                }
-                else
-                {
-                    Estado = false;
-                }
+                //if (cbEstado.Checked == true)
+                //{
+                //    Estado = true;
+                //}
+                //else
+                //{
+                //    Estado = false;
+                //}
 
                 this.Text += " : Editando";
             }
@@ -69,7 +69,7 @@ namespace SistemaComprasS
                 if (Modo.Equals("C"))
                 {
                     sql = "insert into Empleado values ('";
-                    sql += txtCedulaEmpleado.Text + "', '" + txtNombreEmpleado.Text + "', '" + cbxDepartamento.SelectedValue + "', '" + Estado + "')";
+                    sql += txtCedulaEmpleado.Text + "', '" + txtNombreEmpleado.Text + "', '" + cbxDepartamento.SelectedValue + "', '" + cbEstado.Checked + "')";
                 }
                 else
                 {
@@ -78,7 +78,7 @@ namespace SistemaComprasS
                     sql += "Cedula = '" + txtCedulaEmpleado.Text + "',";
                     sql += "Nombre = '" + txtNombreEmpleado.Text + "',";
                     sql += "Departamento = '" + cbxDepartamento.SelectedValue + "',";
-                    sql += "Estado = '" + Estado + "'";
+                    sql += "Estado = '" + cbEstado.Checked + "'";
                     sql += " where IdEmpleado = " + txtIdEmpleado.Text;
 
                 }
