@@ -12,10 +12,9 @@ using System.Windows.Forms;
 
 namespace SistemaComprasS
 {
-
+    
     public partial class frmEdSolicitud : Form
     {
-   
         public int EstadoValue;
         public SqlConnection con { get; set; }
         public int IdSolicitud { get; set; }
@@ -26,6 +25,7 @@ namespace SistemaComprasS
         public int Medida { get; set; }
         public int Estado { get; set; }
         public string Modo { get; set; }
+
         public frmEdSolicitud()
         {
             InitializeComponent();
@@ -41,7 +41,7 @@ namespace SistemaComprasS
             this.empleadoTableAdapter.Fill(this.sistemaComprasDataSet.Empleado);
             // TODO: esta línea de código carga datos en la tabla 'sistemaComprasDataSet.Solicitud' Puede moverla o quitarla según sea necesario.
             this.solicitudTableAdapter.Fill(this.sistemaComprasDataSet.Solicitud);
-            
+
             if (!Modo.Equals("C")) {
 
                 txtIdSolicitud.Text = IdSolicitud.ToString();
@@ -69,13 +69,20 @@ namespace SistemaComprasS
 
         }
 
-        
+        //private void realizarOrden()
+        //{
+        //    string sql = "";
+            
+           
+
+        //    SqlCommand cmd = new SqlCommand(sql, con);
+        //    cmd.ExecuteNonQuery();
+        //}
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             string sql = "";
-      
-
+            
             if (Modo.Equals("C"))
             {
                 if (cbEstado.Checked)
@@ -86,28 +93,19 @@ namespace SistemaComprasS
                 {
                     EstadoValue = 2;
                 }
+                sql = "insert into Solicitud values ('";
+                sql += cbxEmpleado.SelectedValue + "', '" + this.dtpSolicitud.Text + "','";
+                sql += cbxArticulo.SelectedValue + "', '" + Convert.ToInt32(nudCantidad.Value) + "', '" 
+                    + cbxMedida.SelectedValue + "', '" + EstadoValue + "');";
+                sql += "insert into Orden (Solicitud, Fecha, Estado, Articulo, Cantidad, Medida, Marca, Costo)  ";
+                sql += "SELECT s.IdSolicitud, s.Fecha, CAST(CASE s.Estado WHEN 1 THEN 1 ELSE 0 END AS BIT) as Estado, s.Articulo, s.Cantidad, s.Medida, a.Marca, a.Costo ";
+                sql += "FROM Solicitud s INNER JOIN Articulo a on a.IdArticulo = s.Articulo WHERE s.Estado = 1 and s.IdSolicitud = (select max(d.IdSolicitud) from Solicitud d); ";
 
 
-                try{
-                    sql = "If ((Select Existencia from Articulo where IdArticulo = " + cbxArticulo.SelectedValue + ") >= " + Convert.ToInt32(nudCantidad.Value) + ")";
-                    sql += " insert into Solicitud values ('";
-                    sql += cbxEmpleado.SelectedValue + "', '" + this.dtpSolicitud.Text + "','";
-                    sql += cbxArticulo.SelectedValue + "', '" + Convert.ToInt32(nudCantidad.Value) + "', '"
-                        + cbxMedida.SelectedValue + "', '" + EstadoValue + "');";
-
-                    sql += "update Articulo set";
-                    sql += " Existencia = (Select Existencia from Articulo where IdArticulo = " + cbxArticulo.SelectedValue + ") - " + Convert.ToInt32(nudCantidad.Value) ;
-                    sql+= " where IdArticulo = " + cbxArticulo.SelectedValue + ";";
-
-                    sql += "insert into Orden (Solicitud, Fecha, Estado, Articulo, Cantidad, Medida, Marca, Costo)  ";
-                    sql += "SELECT s.IdSolicitud, s.Fecha, CAST(CASE s.Estado WHEN 1 THEN 1 ELSE 0 END AS BIT) as Estado, s.Articulo, s.Cantidad, s.Medida, a.Marca, a.Costo ";
-                    sql += "FROM Solicitud s INNER JOIN Articulo a on a.IdArticulo = s.Articulo WHERE s.Estado = 1 and s.IdSolicitud = (select max(d.IdSolicitud) from Solicitud d); ";
-                } catch (Exception ex)
-                {
-                    MessageBox.Show("La cantidad de existencias es menor a la cantidad solicitada.");
-                }
-
-
+                //if (cbEstado.Checked)
+                //{
+                //    realizarOrden();
+                //}
             }
             else
             {

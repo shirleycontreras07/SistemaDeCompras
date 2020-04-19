@@ -13,7 +13,6 @@ namespace SistemaComprasS
 {
     public partial class FrmEdOrden : Form
     {
-
         public SqlConnection con { get; set; }
         public int IdOrden { get; set; }
         public int Solicitud { get; set; }
